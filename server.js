@@ -78,5 +78,5 @@ app.post('/send-email', async (req, res) => {
 });
 
 app.listen(process.env.PORT , '0.0.0.0', () => {
-  console.log(`Server is running on http://0.0.0.0:${process.env.SENDGRID_API_KEY}`);
+  console.log(`Server is running on http://0.0.0.0:${process.env.PORT}`);
 });
