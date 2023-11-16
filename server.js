@@ -8,7 +8,6 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-const port = 3325;
 
 // Create a write stream for logging
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
@@ -78,6 +77,6 @@ app.post('/send-email', async (req, res) => {
   }
 });
 
-app.listen(port, '0.0.0.0', () => {
+app.listen(process.env.PORT , '0.0.0.0', () => {
   console.log(`Server is running on http://0.0.0.0:${port}`);
 });
