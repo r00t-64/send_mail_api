@@ -8,7 +8,6 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-const port = 3000;
 
 // Create a write stream for logging
 // const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
@@ -31,7 +30,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 // Create a Mailgen instance
 const mailGenerator = new Mailgen({
-  theme: 'cerberus',
+  theme: 'default',
   product: {
     name: 'Isaac A. Rivera',
     link: 'https://isaac-alexis44.web.app/',
@@ -79,5 +78,5 @@ app.post('/send-email', async (req, res) => {
 });
 
 app.listen(process.env.PORT , '0.0.0.0', () => {
-  console.log(`Server is running on http://0.0.0.0:${port}`);
+  console.log(`Server is running on http://0.0.0.0:${process.env.SENDGRID_API_KEY}`);
 });
