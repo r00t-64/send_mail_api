@@ -8,6 +8,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
+const port = 3000;
 
 // Create a write stream for logging
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
