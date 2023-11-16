@@ -18,7 +18,12 @@ app.use(morgan(':method :url :status :res[content-length] - :response-time ms - 
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms - :date[web] - :remote-addr - :req[body]')); // Log to console
 
 
-app.use(cors()); // Enable CORS for all routes
+// Use cors middleware with specific configurations
+app.use(cors({
+  origin: 'https://isaac-alexis44.web.app',
+  methods: ['POST', 'GET', 'OPTIONS'], // Add other allowed methods as needed
+  allowedHeaders: ['Content-Type'], // Add other allowed headers as needed
+}));
 
 app.use(express.json());
 
