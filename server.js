@@ -19,7 +19,7 @@ const app = express();
 
 // Use cors middleware with specific configurations
 app.use(cors({
-  origin: 'https://isaac-alexis44.web.app',
+  origin: process.env.URL_ORIGIN,
   methods: ['POST', 'GET', 'OPTIONS'], // Add other allowed methods as needed
   allowedHeaders: ['Content-Type'], // Add other allowed headers as needed
 }));
@@ -33,7 +33,7 @@ const mailGenerator = new Mailgen({
   theme: 'default',
   product: {
     name: 'Isaac A. Rivera',
-    link: 'https://isaac-alexis44.web.app/',
+    link: process.env.URL_ORIGIN,
     // Add more product information if needed
   },
 });
