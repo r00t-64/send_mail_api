@@ -77,7 +77,7 @@ app.post('/send-email', async (req, res) => {
   });
 
   const emailOptions = {
-    from: process.env.EMAIL_USER,
+    from: process.env.GMAIL_USER,
     to,
     subject,
     html: emailBody,
