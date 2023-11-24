@@ -26,7 +26,9 @@ app.use(cors({
 
 app.use(express.json());
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+// Transporter for SendGrid
+const transporter = sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 // Create a Mailgen instance
 const mailGenerator = new Mailgen({
@@ -62,14 +64,14 @@ app.post('/send-email', async (req, res) => {
   });
 
   const emailOptions = {
-    from: 'business.isaacrivera@proton.me',
+    from: process.env.EMAIL_USER,
     to,
     subject,
     html: emailBody,
   };
 
   try {
-    const info = await sgMail.send(emailOptions);
+    const info = await transporter.send(emailOptions);
     res.json({ success: 'Email sent successfully', info });
   } catch (error) {
     console.error('Error:', error);
