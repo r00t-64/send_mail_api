@@ -63,7 +63,7 @@ app.post('/send-email', async (req, res) => {
   // Generate HTML email using Mailgen
   const emailBody = mailGenerator.generate({
     body: {
-      intro: 'Potential Customer',
+      intro: 'You Have A New Potential Customer',
       table: {
         data: [
           { name: 'Name', name },
