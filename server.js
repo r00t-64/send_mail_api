@@ -84,7 +84,7 @@ app.post('/send-email', async (req, res) => {
   };
 
   try {
-    const info = await transporter_gm.send(emailOptions);
+    const info = await transporter_gm.sendMail(emailOptions);
     res.json({ success: 'Email sent successfully', info });
   } catch (error) {
     console.error('Error:', error);
