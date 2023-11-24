@@ -1,5 +1,6 @@
 const express = require('express');
 const sgMail = require('@sendgrid/mail');
+const nodemailer = require('nodemailer')
 const morgan = require('morgan');
 const fs = require('fs');
 const path = require('path');
@@ -28,7 +29,19 @@ app.use(express.json());
 
 
 // Transporter for SendGrid
-const transporter = sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const transporter_sg = sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+// Transporter for Gmail
+const transporter_gm = nodemailer.createTransport({
+  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false,
+  auth: {
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_TOKEN,
+  },
+});
 
 // Create a Mailgen instance
 const mailGenerator = new Mailgen({
@@ -71,7 +84,7 @@ app.post('/send-email', async (req, res) => {
   };
 
   try {
-    const info = await transporter.send(emailOptions);
+    const info = await transporter_gm.send(emailOptions);
     res.json({ success: 'Email sent successfully', info });
   } catch (error) {
     console.error('Error:', error);
