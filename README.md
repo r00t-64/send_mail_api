@@ -64,6 +64,6 @@ PORT=3000
 To start the server, run the following command in your terminal:
 
 ```bash
-node your-server-file.js
+node server.js
 ```
 
