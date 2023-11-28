@@ -1,7 +1,7 @@
 # API Documentation
 
 ## Base URL
-- Base URL: `https://isaac-alexis44.web.app:3000`
+- Base URL: `https://perfect-buckle-lion.cyclic.app`
 
 ## Endpoints
 
