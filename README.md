@@ -1,7 +1,7 @@
 # API Documentation
 
 ## Base URL
-- Base URL: `https://perfect-buckle-lion.cyclic.app`
+- Base URL: `https://localhost:3000`
 
 ## Endpoints
 
@@ -56,7 +56,7 @@ Create a `.env` file in the root of your project and define the following variab
 ```env
 GMAIL_TOKEN=your_gmail_token
 GMAIL_USER=your_gmail_user@example.com
-URL_ORIGIN=http://your-product-url.com
+URL_ORIGIN=http://your-web-consumer-url.com
 PORT=3000
 ```
 
@@ -66,4 +66,19 @@ To start the server, run the following command in your terminal:
 ```bash
 node server.js
 ```
+# Trigger the API
+```bash
+curl -X POST http://localhost:3000/send-email \                                       
+  -H "Content-Type: application/json" \
+  -d '{
+    "to": "to_email@example.com",
+    "subject": "Test Subject",
+    "text": "This is a test email",
+    "name": "",
+    "email": "",
+    "phone": "",
+    "message": ""
+  }'
+```
+
 
